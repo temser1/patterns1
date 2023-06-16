@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+sourceCompatibility = 11
+
+// кодировка файлов (если используете русский язык в файлах)
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+
+    testImplementation 'org.jetbrains:annotations:23.0.0'
+
+    testImplementation 'com.codeborne:selenide:6.7.2'
+
+    testImplementation 'com.github.javafaker:javafaker:1.0.2'
+
+
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.24'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+}
+
+test {
+    useJUnitPlatform()
+    systemProperty 'selenide.headless', System.getProperty('selenide.headless')
+}
